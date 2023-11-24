@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка точки</title>
+    <style>
+        body {
+            font-family: serif;
+            color: #333;
+        }
+        .container {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            font-family: serif;
+            color: #007bff;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .canvas-container {
+            position: relative;
+        }
+
+        canvas {
+            border: 1px solid #000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        ФИО:Вайкус Яков Михайлович<br>
+        Группа: P3224<br>
+        Вариант: 3400
+    </div>
+    <h1>Проверка точки</h1>
+    <form id="pointForm">
+        <label class="input-label" for="R">Радиус (R):</label>
+        <input class="input-field" type="number" name="R" id="R" required min="2" max="5" maxlength="2" oninput="limitInputLength(this, 2)">
+
+        <label class="input-label">X-координата:</label>
+        <div class="checkbox-group">
+            <label for="x-1">
+                <input type="checkbox" name="x" id="x-1" value="-2">-2
+            </label>
+            <label for="x-2">
+                <input type="checkbox" name="x" id="x-2" value="-1.5">-1.5
+            </label>
+            <label for="x-3">
+                <input type="checkbox" name="x" id="x-3" value="-1">-1
+            </label>
+            <label for="x-4">
+                <input type="checkbox" name="x" id="x-4" value="-0.5">-0.5
+            </label>
+            <label for="x-5">
+                <input type="checkbox" name="x" id="x-5" value="0">0
+            </label>
+            <label for="x-6">
+                <input type="checkbox" name="x" id="x-6" value="0.5">0.5
+            </label>
+            <label for="x-7">
+                <input type="checkbox" name="x" id="x-7" value="1">1
+            </label>
+            <label for="x-8">
+                <input type="checkbox" name="x" id="x-8" value="1.5">1.5
+            </label>
+            <label for="x-9">
+                <input type="checkbox" name="x" id="x-9" value="2">2
+            </label>
+        </div>
+
+        <label class="input-label" for="y">Y-координата:</label>
+        <input class="input-field" type="number" name="y" id="y" required min="-3" max="5" maxlength="2" oninput="limitInputLength(this, 2)">
+
+        <input type="submit" value="Проверить" id ="SubmitButton">
+    </form>
+    <div class="error-message" id="checkboxError" style="color: red;"></div>
+    <div class="result" id="resultMessage"></div>
+    <div class="canvas-container">
+        <canvas id="coordinateCanvas" width="250" height="250"></canvas>
+    </div>
+    <!-- Results table -->
+    <table id="resultsTable">
+        <tr>
+            <th>R</th>
+            <th>X</th>
+            <th>Y</th>
+            <th>Результат</th>
+            <th>Текущее время</th>
+            <th>Время выполнения скрипта</th>
+        </tr>
+    </table>
+</div>
+<script src="Script.js"></script>
+<script src="InputLimit.js"></script>
+</body>
+</html>
